@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido e Acompanhamento</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" type="image/png" href="imagens/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="main-pedidos.js" defer></script>
+</head>
+<body>
+
+    
+<!-- Sidebar -->
+<div class="sidebar">
+    <h2>Fast Delivery </h2>
+    <img src="imagens/logo.png" alt="Logo" class="logo">
+    <ul>
+        <li onclick="showContent('cardapio')">Cardapio</li>
+        <li onclick="showContent('pedido')">Pedido Realizado</li>
+        <li onclick="showContent('status')">Acompanhamento</li>
+        <li onclick="showContent('notificacoes')">Notificações</li> 
+    </ul>
+
+    <a href="login.html"><button class="btn-saida">Para restaurante </button></a>
+ </div>
+<script>
+    function showSection(sectionId) {
+        document.querySelectorAll('.content').forEach(section => {
+            section.classList.remove('active');
+        });
+        document.getElementById(sectionId).classList.add('active');
+    }
+</script>
+
+
+
+<!--incio de pagina de cardápio-->
+<div class="cardapio">
+    <div id="cardapio" class="content section header">
+    <h1 align="center">Cardápio</h1>
+    <p align="center">Conteúdo do Cardápio</p>
+
+    <div class="category">
+        <h3>Pizzas</h3>
+        <div class="menu-item">
+            <img src="imagens/pizzas.jpg" alt="Entrada 1">
+            <div class="item-details">
+                <h4>Frango</h4>
+                <p>Frango com Catupiry</p>
+                <span class="price">R$32,00</span>
+                <button class="add-to-cart" onclick="addToCart('pizza-frango', 32.00)">Adicionar</button>
+            </div>
+            <div class="item-details">
+                <h4>Calabresa</h4>
+                <p>Calabresa e Cebola.</p>
+                <span class="price">R$ 32,00</span>
+                <button class="add-to-cart" onclick="addToCart('pizza-calabresa', 32.00)">Adicionar</button>
+            </div>
+            <div class="item-details">
+                <h4>Portuguesa</h4>
+                <p>Mussarela, Presunto, Ervilha, Cebola</p>
+                <span class="price">R$ 34,00</span>
+                <button class="add-to-cart" onclick="addToCart('pizza-portuguesa', 34.00)">Adicionar</button>
+            </div>
+            <div class="item-details">
+                <h4>Mussarela</h4>
+                <p>Mussarela com Tomate</p>
+                <span class="price">R$ 35,00</span>
+                <button class="add-to-cart" onclick="addToCart('pizza-mussarela', 35.00)">Adicionar</button>
+            </div>
+            <div class="item-details">
+                <h4>Atum</h4>
+                <p>Atum com Cebola.</p>
+                <span class="price">R$ 15,00</span>
+                <button class="add-to-cart" onclick="addToCart('pizza-atum', 15.00)">Adicionar</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="category">
+        <h3>Pasteis</h3>
+        <div class="menu-item">
+            <img src="imagens/pasteis.jpg" alt="Entrada 2">
+            <div class="item-details">
+                <h4>Frango</h4>
+                <p>Frango com Catupiry</p>
+                <span class="price">R$11,00</span>
+                <button class="add-to-cart" onclick="addToCart('pastel-frango', 11.00)">Adicionar</button>
+            </div>
+            <div class="item-details">
+                <h4>Carne</h4>
+                <p>Carne moída, com azeitona preta</p>
+                <span class="price">R$ 11,00</span>
+                <button class="add-to-cart" onclick="addToCart('pastel-carne', 11.00)">Adicionar</button>
+            </div>
+            <div class="item-details">
+                <h4>Queijo</h4>
+                <p>Mussarela</p>
+                <span class="price">R$ 12,00</span>
+                <button class="add-to-cart" onclick="addToCart('pastel-queijo', 12.00)">Adicionar</button>
+            </div>
+            <div class="item-details">
+                <h4>Pizza</h4>
+                <p>Mussarela, Tomate, e Oregano</p>
+                <span class="price">R$ 12,00</span>
+                <button class="add-to-cart" onclick="addToCart('pastel-pizza', 12.00)">Adicionar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="category">
+        <h3>Pratos Principais</h3>
+        <div class="menu-item">
+            <img src="imagens/frango-parmegiana.jpg" alt="Prato 1">
+            <div class="item-details">
+                <h4>Frango à Parmegiana</h4>
+                <p>Frango empanado coberto com molho de tomate e queijo derretido.</p>
+                <span class="price">R$ 35,00</span>
+                <button class="add-to-cart" onclick="addToCart('prato-frango a parmegiana', 35.00)">Adicionar</button>
+            </div>
+            <div class="item-details">
+                <h4>Filé Mignon</h4>
+                <p>Filé mignon grelhado acompanhado de arroz e batatas fritas.</p>
+                <span class="price">R$ 45,00</span>
+                <button class="add-to-cart" onclick="addToCart('prato-filé mignon', 45.00)">Adicionar</button>
+            </div>
+        </div>
+    </div>  
+
+    <div class="category">
+        <h3>Sobremesas</h3>
+        <div class="menu-item">
+            <img src="imagens/torta-de-limao.jpg" alt="Sobremesa 1">
+            <div class="item-details">
+                <h4>Torta de Limão</h4>
+                <p>Torta cremosa de limão com base crocante.</p>
+                <span class="price">R$ 12,00</span>
+                <button class="add-to-cart" onclick="addToCart('sobremesa-torta de limão', 12.00)">Adicionar</button>
+            </div>
+            <div class="item-details">
+                <h4>Mousse de Chocolate</h4>
+                <p>Mousse cremosa de chocolate com cobertura de chantilly.</p>
+                <span class="price">R$ 14,00</span>
+                <button class="add-to-cart" onclick="addToCart('sobremesa-mousse de chocolate', 14.00)">Adicionar</button>
+            </div>
+        </div>
+    </div> 
+
+
+<div class="category">
+        <h3>Refrigerante</h3>
+    <div class="menu-item">
+        <span>Coca-cola / Guaraná / Pepsi / Fanta 2 Litros- R$12,00</span>
+        <button class="add-to-cart" onclick="addToCart('Refrigerante 2 litros', 12.00)">Adicionar</button>
+    </div>
+    <div class="menu-item">
+        <span>Coca-cola / Guaraná / Pepsi / Fanta 600ml - R$8,00</span>
+        <button class="add-to-cart" onclick="addToCart('Refrigerante 600ml', 8.00)">Adicionar</button>
+    </div>
+    <div class="menu-item">
+        <span>Coca-cola / Guaraná / Pepsi / Fanta Lata - R$5,00</span>
+        <button class="add-to-cart" onclick="addToCart('Refrigerante Lata 350ml', 5.00)">Adicionar</button>
+    </div>
+</div>
+
+    <div class="cart">
+        <h3>Carrinho</h3>
+        <ul id="cart-items"></ul>
+            <p class="total">Total: R$<span id="total-price">0.00</span></p>
+            <h3>Finalizar Pedido</h3>
+            <label>Nome: <input type="text" id="nome"></label><br><br>
+            <label>Endereço: <input type="text" id="endereco"></label><br><br>
+            <label for="observacao" >Observação:
+                 <textarea id="observacao" name="obs" placeholder="Escreva o sabor do seu refrigerante aqui&#10;" rows="1" cols="100" p></textarea>
+            </label>
+<br><br> <!-- Métodos de Pagamento -->
+
+    <div class="config-item">
+        <label style="font-weight: 600;">Métodos de Pagamento (Na entrega)</label>
+        <div>
+            <input type="checkbox" id="credit-card">
+            <label for="credit-card">Cartão de Crédito</label>
+        </div>
+        <div>
+            <input type="checkbox" id="debit">
+            <label for="debit">Débito</label>
+        </div>
+        <div>
+            <input type="checkbox" id="money">
+            <label for="money">Dinheiro</label>
+        </div>
+        <div>
+            <input type="checkbox" id="pix">
+            <label for="pix">Pix</label>
+        </div>
+    </div>
+
+<button class="add-to-cart1" onclick="checkout()">Concluir Pedido</button>
+
+</div>
+
+    
+
+  </div>
+</div>   
+<script>//codigo do cardapio para finanlizar pedido
+
+let cart = [];
+let total = 0;
+
+    // Recuperar pedidos do sessionStorage
+let pedidosRealizados = JSON.parse(localStorage.getItem('pedidosRealizados')) || [];
+
+// Função para adicionar itens ao carrinho
+function addToCart(item, price) {
+    cart.push({ item, price }); // Adiciona o item no carrinho
+    total += price; // Atualiza o total do carrinho
+    updateCart(); // Atualiza a exibição do carrinho
+}
+
+// Função para atualizar o carrinho
+function updateCart() {
+    const cartList = document.getElementById("cart-items");
+    cartList.innerHTML = ""; // Limpa o carrinho antes de renderizar
+
+    cart.forEach((product, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `${product.item} - R$${product.price.toFixed(2)} 
+        <button onclick="removeFromCart(${index})" style="margin-left: 50px; background: red; color: white; border: none; cursor: pointer;">🗑 Excluir</button>`;
+        cartList.appendChild(li);
+    });
+
+    // Atualiza o total na página
+    document.getElementById("total-price").textContent = total.toFixed(2);
+}
+
+function checkout() {
+    const nome = document.getElementById("nome").value;
+    const endereco = document.getElementById("endereco").value;
+    const observacao = document.getElementById("observacao").value;
+
+    if (!nome || !endereco) {
+        alert("Por favor, preencha seu nome e endereço para concluir o pedido.");
+        return;
+    }
+
+    const metodoPagamento = [];
+    if (document.getElementById("credit-card").checked) metodoPagamento.push("Cartão de Crédito");
+    if (document.getElementById("debit").checked) metodoPagamento.push("Débito");
+    if (document.getElementById("money").checked) metodoPagamento.push("Dinheiro");
+    if (document.getElementById("pix").checked) metodoPagamento.push("Pix");
+
+    if (metodoPagamento.length === 0) {
+        alert("Por favor, selecione pelo menos um método de pagamento.");
+        return;
+    }
+
+    const novoPedido = {
+        id: Date.now(),
+        nome: nome,
+        endereco: endereco,
+        data: new Date().toLocaleString(),
+        itens: [...cart],
+        observacao: observacao,
+        total: total.toFixed(2),
+        pagamento: metodoPagamento.join(", "),
+        status: "Recebido"
+    };
+
+    const pedidosRealizados = JSON.parse(localStorage.getItem("pedidosRealizados")) || [];
+    pedidosRealizados.push(novoPedido);
+    localStorage.setItem("pedidosRealizados", JSON.stringify(pedidosRealizados));
+
+    alert("Pedido realizado com sucesso!");
+
+    // Resetar carrinho
+    cart = [];
+    total = 0;
+    updateCart();
+
+    // Limpar campos
+    document.getElementById("nome").value = "";
+    document.getElementById("endereco").value = "";
+    document.getElementById("observacao").value = "";
+
+    // Atualiza a exibição dos pedidos
+    atualizarPedidosRealizados();
+}
+
+function atualizarPedidosRealizados() {
+    const pedidosContainer = document.getElementById("pedidos-realizados");
+    const pedidosRealizados = JSON.parse(localStorage.getItem("pedidosRealizados")) || [];
+
+    pedidosContainer.innerHTML = ""; // Limpa o contêiner antes de renderizar
+
+    if (pedidosRealizados.length === 0) {
+        pedidosContainer.innerHTML = "<p>Nenhum pedido realizado até o momento.</p>";
+        return;
+    }
+
+    pedidosRealizados.forEach((pedido, index) => {
+        let pedidoHTML = `
+            <div class="pedido-item">
+                <p><strong>Pedido #${index + 1}</strong></p>
+                <p><strong>Cliente:</strong> ${pedido.nome}</p>
+                <p><strong>Endereço:</strong> ${pedido.endereco}</p>
+                <p><strong>Data:</strong> ${pedido.data}</p>
+                <p><strong>Itens:</strong> ${pedido.itens.map(i => i.item).join(", ")}</p>
+                <p><strong>Observação:</strong> ${pedido.observacao}</p>
+                <p><strong>Total:</strong> R$ ${pedido.total}</p>
+                <p><strong>Pagamento:</strong> ${pedido.pagamento}</p>
+                <p><strong>Status:</strong> ${pedido.status}</p>
+                <hr>
+            </div>
+        `;
+        pedidosContainer.innerHTML += pedidoHTML;
+    });
+}
+
+// Função para excluir um pedido
+function excluirPedido(index) {
+    const pedidosRealizados = JSON.parse(localStorage.getItem('pedidosRealizados')) || [];
+    if (confirm("Tem certeza que deseja excluir este pedido?")) {
+        pedidosRealizados.splice(index, 1); // Remove o pedido pelo índice
+        localStorage.setItem('pedidosRealizados', JSON.stringify(pedidosRealizados)); // Atualiza o localStorage
+        atualizarPedidosRealizados(); // Re-renderiza a lista
+    }
+}
+
+function atualizarStatus() {
+    const pedidosRealizados = JSON.parse(localStorage.getItem('pedidosRealizados')) || [];
+    const pedidoIndex = 0;
+    const pedido = pedidosRealizados[pedidoIndex];
+
+    if (!pedido) {
+        alert("Pedido não encontrado.");
+        return;
+    }
+
+    if (pedido.status === "Em Preparação") {
+        pedido.status = "Em Transito";
+    } else if (pedido.status === "Em Transito") {
+        pedido.status = "Entregue";
+    }
+
+    localStorage.setItem('pedidosRealizados', JSON.stringify(pedidosRealizados)); // Atualiza no localStorage
+    atualizarPedidosRealizados();
+}
+
+// Atualiza a página com a lista de pedidos e o status do primeiro pedido na aba de status
+document.addEventListener('DOMContentLoaded', () => {
+    atualizarPedidosRealizados(); // Exibe a lista de pedidos ao carregar a página
+
+    if (pedidosRealizados.length > 0) {
+        const statusAtual = document.getElementById("status-atual");
+        statusAtual.textContent = pedidosRealizados[0].status || "Em Preparação";
+    }
+});
+
+
+</script>
+
+
+
+<!-- Pedido Realizado -->
+<div class="pedido content section1" id="pedido">
+    <h2>Pedidos Realizados</h2>
+
+        <div id="pedidos-realizados">
+            <!-- Aqui será mostrado o histórico de pedidos -->
+        </div>          
+</div>
+<script>//codigo que mostra o pedido realizado
+    // Simulação de envio de pedido pelo cliente
+function realizarPedido(pedido) {
+    let pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
+    pedidos.push({ ...pedido, status: "Recebido" });
+    localStorage.setItem("pedidos", JSON.stringify(pedidos));
+    atualizarPedidosCliente();
+    atualizarPedidosRestaurante();
+}
+
+// Atualiza os pedidos na página do Cliente
+function atualizarPedidosCliente() {
+    let pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
+    let container = document.getElementById("pedidos-realizados");
+    container.innerHTML = pedidos.map(p => `<p>${p.nome} - Status: ${p.status}</p>`).join("");
+}
+
+// Atualiza os pedidos na página do Restaurante
+function atualizarPedidosRestaurante() {
+    let pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
+    let container = document.getElementById("restaurant-orders");
+    container.innerHTML = pedidos.map((p, index) => `
+        <li>
+            ${p.nome} - Status: ${p.status}
+            <button onclick="atualizarStatusPedido(${index}, 'Em Preparação')">Em Preparação</button>
+            <button onclick="atualizarStatusPedido(${index}, 'Em Andamento')">Em Andamento</button>
+            <button onclick="atualizarStatusPedido(${index}, 'Entregue')">Entregue</button>
+            <button onclick="atualizarStatusPedido(${index}, 'Cancelado')">Cancelado</button>
+        </li>
+    `).join("");
+}
+
+// Atualiza o status do pedido e reflete para o Cliente
+function atualizarStatusPedido(index, status) {
+    let pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
+    if (pedidos[index]) {
+        pedidos[index].status = status;
+        localStorage.setItem("pedidos", JSON.stringify(pedidos));
+        atualizarPedidosCliente();
+        atualizarPedidosRestaurante();
+    }
+}
+
+// Inicializa as listas de pedidos ao carregar a página
+document.addEventListener("DOMContentLoaded", () => {
+    atualizarPedidosCliente();
+    atualizarPedidosRestaurante();
+});
+
+</script>
+
+
+
+<!-- Acompanhamento de Status -->
+<div class="status">
+    <div id="status" class="content section1">
+        <h2>Acompanhamento de Status</h2>
+        <p><strong>Status Atual:</strong> <span id="status-atual">Em Preparação</span></p>
+        <div class="barra-status">
+            <div class="status-indicator" style="width: 50%"></div>
+        </div>
+        <p><strong>Estimativa de Entrega:</strong> <span id="estimativa-entrega"></span></p>
+    </div>
+</div>
+
+
+<!-- Notificações -->
+ <div class="notificacoes">
+    <div id="notificacoes" class="content section1">
+        <h2>Notificações</h2>
+        <div class="notification">
+            <p><strong>Status do Pedido:</strong> Seu pedido está sendo preparado.</p>
+        </div>
+        <div class="notification">
+            <p><strong>Status do Pedido:</strong> Seu pedido foi enviado para o motoboy.</p>
+        </div>
+    </div>            
+</div>
+
+   
+
+</body>
+</html>

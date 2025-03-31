@@ -1,0 +1,311 @@
+/* Definindo as cores */
+:root {
+    --laranja: #fa7c23;
+    --laranja-claro: #fcab71;
+    --vermelho: #cb2807;
+    --verde-escuro: #0c7425;
+    --verde-claro: #79a86a;
+    --dourado: #ddc174;
+    --marrom: #682e18;
+    --verde-musgo: #4b7e51;
+    --bege: #eeedc5;
+    --sidebar-background: #2c3e50;
+    --sidebar-hover: #34495e;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Corpo e fundo */
+body {
+    display: flex;
+    background-color: var(--bege);
+    height: 100vh;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* Container principal para o layout */
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 20%;
+    background-color: var(--marrom);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.sidebar h2{
+    font-size: 24px;
+    color: white;
+}
+
+/* Lista e itens da sidebar */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar ul li {
+    color: #fff;
+    padding: 12px;
+    cursor: pointer;
+    margin: 10px 0;
+    width: 100%;
+    text-align: left;
+    background-color: var(--laranja);
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar ul li:hover {
+    background-color: var(--laranja-claro);
+}
+
+.logo{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    margin: -60px 200px 10px; 
+}
+
+.btn-saida {
+    position: absolute; /* Faz o botão se posicionar de forma absoluta em relação à sidebar */
+    bottom: 20px; /* Distância de 20px do fundo da sidebar */
+    left: 20px; /* Distância de 20px da borda esquerda da sidebar */
+    color: #fff;
+    font-weight: 500;
+    padding: 12px;
+    cursor: pointer;
+    width: auto; /* Ajusta a largura conforme o conteúdo */
+    text-align: center;
+    background-color: var(--botoes);
+    border-radius: 6px;
+    border: none;
+}
+
+
+
+.btn-saida {
+    position: absolute; /* Faz o botão se posicionar de forma absoluta em relação à sidebar */
+    bottom: 20px; /* Distância de 20px do fundo da sidebar */
+    left: 20px; /* Distância de 20px da borda esquerda da sidebar */
+    color: #fff;
+    font-weight: 500;
+    padding: 12px;
+    cursor: pointer;
+    width: auto; /* Ajusta a largura conforme o conteúdo */
+    text-align: center;
+    background-color: var(--laranja);
+    border-radius: 6px;
+    border: none;
+}
+
+.btn-saida:hover {
+    background-color: var(--laranja-claro);
+}
+
+/* Conteúdo principal */
+.content {
+    width: 80%;
+    padding: 20px;
+    display: none;
+    
+}
+
+.section {
+    display: none; /* Inicialmente, o conteúdo está oculto */
+    width: 100%;
+    text-align: center; /* Garante que o conteúdo esteja centralizado */
+}
+
+.section1 {
+    display: none; /* Inicialmente, o conteúdo está oculto */
+    width: 100%;
+    text-align: left; /* Garante que o conteúdo esteja centralizado */
+}
+
+
+.active {
+    display: block;
+}
+
+/* Seções */
+.section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: var(--laranja);
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Conteúdo cardapio */
+/* Seções principais */
+.pedido, .status, .notificacoes {
+    margin: 2% 0;
+    width: 79%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+}
+
+/* Conteúdo cardapio */
+.cardapio {
+    margin: 2% 0;
+    width: 80%; /* Ocupa os 80% da tela após a sidebar */
+    display: flex;
+    justify-content: flex-start; /* Alinha os itens ao início */
+    align-items: flex-start; /* Alinha os itens ao topo */
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+}
+.header{
+    padding-left: 20px;
+}
+
+
+
+.add-to-cart1 {
+    background-color: var(--vermelho);
+    color: white;
+    border: none;
+    margin: 20px 800px;
+    padding: 2px 80px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart1:hover {
+    background-color: var(--vermelho-claro);
+}
+
+/* Estilo para a seção de categorias */
+.category {
+    margin-bottom: 30px;
+}
+
+/* Estilo para os itens do menu */
+.menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Estilo para os detalhes dos itens */
+.item-details {
+    flex: 1;
+    margin-left: 10px;
+}
+
+/* Estilo para as imagens */
+.menu-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Estilo para os botões */
+.add-to-cart {
+    background-color: #fa7c23;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background-color: #f39c12;
+}
+
+/* Estilo para os preços */
+.price {
+    font-size: 1.2em;
+    color: #e74c3c;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Carrinho */
+#cart {
+    margin-top: 20px;
+    padding: 10px;
+    border: 2px solid #000;
+    min-height: 50px;
+}
+
+.cart{
+    text-align: left ;
+    margin-top: 20px;
+    
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.total {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+
+button {
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+
+
+.barra-status {
+    width: 100%;
+    height: 20px;
+    background: #f0f0f0;
+    border-radius: 5px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.status-indicator {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+
+

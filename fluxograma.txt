@@ -1,0 +1,11 @@
+ fluxo grama é:
+ cliente faz pedido ->
+pedido é enviando para pedidos (tela do restaurante) 
+ -> restaurante atualiza o pedido com (Em preparação)
+ -> cliente recebe na aba de acompanhamento o status do pedido que se encontra em preparação 
+ -> restaurante atualiza o pedido para (Em andamento) e depois (Entregue) ou (cancelado). 
+ -> Enquando isso se o status do cliente tiver: 
+Em preparação= 30% 
+Em andamento= 50% 
+Entregue= 100% Concluído.
+ou cancelado= 0% (barra vermelha)

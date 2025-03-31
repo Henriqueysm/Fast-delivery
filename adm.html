@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Administração</title>
+    <link rel="stylesheet" href="adm.css">
+    <script src="main-adm.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="shortcut icon" type="image/png" href="imagens/logo.png">
+</head>
+<body>
+
+<div class="sidebar">
+        <h2>Painel Admin</h2>
+    <ul>
+        <li onclick="showContent('dashboard')">Dashboard</li>
+    <li onclick="showContent('pedidos')">Pedidos</li>
+    <li onclick="showContent('cardapio')">Cardápio</li>
+        <li onclick="showContent('configuracoes')">Configurações</li> </ul>
+
+        <a href="login.html"><button class="btn-saida">Saída </button></a>
+        <a href="index.html"><button class="btn-cliente">Pág Cliente</button></a>
+
+</div>
+
+
+<!--incio de pagina de darshboard-->
+<div class="darshboard">
+    <div id="dashboard" class="content header">
+        <h1>Dashboard</h1>
+        <p>Conteúdo do Dashboard</p>
+                <div class="dashboard">
+                  <div class="cards">
+                      <div class="card">
+                          <h3>Pedidos <br>Totais</h3>
+                          <p>500</p>
+                      </div>
+                      <div class="card">
+                          <h3>Pedidos Pendentes</h3>
+                          <p>50</p>
+                      </div>
+                      <div class="card">
+                          <h3>Faturamento Mensal</h3>
+                          <p>R$ 10.000,00</p>
+                      </div>
+                  </div>
+                  
+                  <div class="charts">
+                      <div class="chart">
+                          <h3>Pedidos por Status</h3>
+                          <canvas id="statusChart"></canvas>
+                      </div>
+                      <br>
+                      <div class="chart">
+                          <h3>Faturamento Mensal</h3>
+                          <canvas id="revenueChart"></canvas>
+                      </div>
+                  </div>
+                  <br><br>
+                  <div class="recent-activities">
+                    <h3>Últimos Pedidos</h3>
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Data</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr>
+                            <td>001</td>
+                            <td>Maria</td>
+                            <td>31/03/2025</td>
+                            <td>Pendente</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+    </div></div>
+</div>
+<script> // Função para exibir o conteúdo correto ao clicar nos itens do menu
+    function renderDashboardCharts() {
+    // Gráfico de Barras
+    const ctx1 = document.getElementById('statusChart').getContext('2d');
+    const statusChart = new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: ['Pendente', 'Em Andamento', 'Entregue', 'Cancelado'],
+            datasets: [{
+                label: 'Status dos Pedidos',
+                data: [50, 100, 200, 150],
+                backgroundColor: ['#f39c12', '#f1c40f', '#2ecc71', '#e74c3c'],
+                borderColor: ['#f39c12', '#f1c40f', '#2ecc71', '#e74c3c'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.raw + ' pedidos';
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Status'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Quantidade'
+                    },
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Gráfico de Linha (Faturamento)
+    const ctx2 = document.getElementById('revenueChart').getContext('2d');
+    const revenueChart = new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: ['Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez','Jan', 'Fev', 'Mar'],
+            datasets: [{
+                label: 'Faturamento',
+                data: [10000, 12000, 13000, 15000, 14000, 15000, 12000, 20000, 22000, 20000, 25000, 30000],
+                borderColor: '#fa7c23',
+                backgroundColor: 'rgba(250, 124, 35, 0.2)',
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return 'R$ ' + tooltipItem.raw.toLocaleString();
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Mês'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Valor (R$)'
+                    },
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function(value) {
+                            return 'R$ ' + value.toLocaleString();
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+// Invoca a função ao exibir o dashboard
+if (document.getElementById('dashboard')) {
+    renderDashboardCharts();
+}
+</script>
+<!-- Fim do conteúdo do Dashboard -->
+
+
+<!--incio de pagina de pedidos-->
+<div id="pedidos" class="content">
+    <h1>Pedidos realizados pelos Clientes</h1>
+    <div id="restaurant-orders">
+       
+    </div>
+
+</div>
+</div>
+
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const pedidos = JSON.parse(localStorage.getItem('pedidosRealizados')) || [];
+    console.log("Pedidos recuperados do localStorage:", pedidos); // Log para verificar os pedidos
+    const container = document.getElementById('restaurant-orders');
+
+    if (pedidos.length === 0) {
+        container.innerHTML = '<p>Nenhum pedido realizado até o momento.</p>';
+        return;
+    }
+
+    pedidos.forEach((pedido, index) => {
+        console.log(`Renderizando pedido ${index + 1}:`, pedido); // Log para cada pedido
+        const pedidoHTML = `
+            <div>
+                <p><strong>ID:</strong> ${pedido.id || index + 1}</p>
+                <p><strong>Cliente:</strong> ${pedido.nome}</p>
+                <p><strong>Endereço:</strong> ${pedido.endereco}</p>
+                <p><strong>Status:</strong> ${pedido.status}</p>
+                <p><strong>Itens:</strong> ${pedido.itens.map(item => item.item).join(', ')}</p>
+                <p><strong>Total:</strong> R$ ${pedido.total}</p>
+                <button onclick="atualizarStatusPedido(${index}, 'Em Preparação')">Em Preparação</button>
+                <button onclick="atualizarStatusPedido(${index}, 'Em Andamento')">Em Andamento</button>
+                <button onclick="atualizarStatusPedido(${index}, 'Entregue')">Entregue</button>
+                <button onclick="atualizarStatusPedido(${index}, 'Cancelado')">Cancelado</button>
+                <button class="excluir" onclick="excluirPedido(${index})">Excluir</button>
+                <hr>
+            </div>
+        `;
+        container.innerHTML += pedidoHTML;
+    });
+});
+
+
+function atualizarStatusPedido(index, status) {
+    const pedidos = JSON.parse(localStorage.getItem('pedidosRealizados')) || [];
+    if (pedidos[index]) {
+        pedidos[index].status = status;
+        localStorage.setItem('pedidosRealizados', JSON.stringify(pedidos));
+        location.reload(); // Atualiza a página para refletir as mudanças
+    }
+}
+
+
+function excluirPedido(index) {
+    const pedidos = JSON.parse(localStorage.getItem('pedidosRealizados')) || [];
+    if (pedidos[index]) {
+        if (confirm("Tem certeza que deseja excluir este pedido?")) {
+            pedidos.splice(index, 1); // Remove o pedido pelo índice
+            localStorage.setItem('pedidosRealizados', JSON.stringify(pedidos)); // Atualiza o localStorage
+            location.reload(); // Recarrega a página para atualizar a lista
+        }
+    } else {
+        alert("Pedido não encontrado.");
+    }
+}
+
+
+</script>
+
+<!--incio de pagina de cardápio-->
+<div class="cardapio">
+    <div id="cardapio" class="content header">
+    <h1>Alterar Cardápio</h1>
+    <p>Conteúdo do Cardápio</p>
+
+    <div class="category">
+        <h3>Pizzas</h3>
+        <div class="menu-item">
+            <img src="imagens/pizzas.jpg" alt="Entrada 1">
+            <div class="item-details">
+                <h4>Frango</h4>
+                <p>Frango com Catupiry</p>
+                <span class="price">R$32,00</span>
+                <button class="add-to-cart">Adicionar</button>
+            </div>
+            <div class="item-details">
+                <h4>Calabresa</h4>
+                <p>Calabresa e Cebola.</p>
+                <span class="price">R$ 32,00</span>
+                <button class="add-to-cart">Adicionar</button>
+            </div>
+            <div class="item-details">
+                <h4>Portuguesa</h4>
+                <p>Mussarela, Presunto, Ervilha, Cebola</p>
+                <span class="price">R$ 34,00</span>
+                <button class="add-to-cart">Adicionar</button>
+            </div>
+            <div class="item-details">
+                <h4>Mussarela</h4>
+                <p>Mussarela com Tomate</p>
+                <span class="price">R$ 35,00</span>
+                <button class="add-to-cart">Adicionar</button>
+            </div>
+            <div class="item-details">
+                <h4>Atum</h4>
+                <p>Atum com Cebola.</p>
+                <span class="price">R$ 15,00</span>
+                <button class="add-to-cart">Adicionar</button>
+            </div>
+        </div>
+
+
+        <div class="menu-item">
+            <img src="imagens/pasteis.jpg" alt="Entrada 2">
+            <div class="item-details">
+                <h4>Frango</h4>
+                <p>Frango com Catupiry</p>
+                <span class="price">R$11,00</span>
+                <button class="add-to-cart">Adicionar</button>
+            </div>
+            <div class="item-details">
+                <h4>Carne</h4>
+                <p>Carne moída</p>
+                <span class="price">R$ 11,00</span>
+                <button class="add-to-cart">Adicionar</button>
+            </div>
+            <div class="item-details">
+                <h4>Queijo</h4>
+                <p>Mussarela</p>
+                <span class="price">R$ 12,00</span>
+                <button class="add-to-cart">Adicionar</button>
+            </div>
+            <div class="item-details">
+                <h4>Pizza</h4>
+                <p>Mussarela, Tomate, e Oregano</p>
+                <span class="price">R$ 12,00</span>
+                <button class="add-to-cart">Adicionar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="category">
+        <h3>Pratos Principais</h3>
+        <div class="menu-item">
+            <img src="imagens/frango-parmegiana.jpg" alt="Prato 1">
+            <div class="item-details">
+                <h4>Frango à Parmegiana</h4>
+                <p>Frango empanado coberto com molho de tomate e queijo derretido.</p>
+                <span class="price">R$ 35,00</span>
+                <button class="add-to-cart">Adicionar</button>
+            </div>
+            <div class="item-details">
+                <h4>Filé Mignon</h4>
+                <p>Filé mignon grelhado acompanhado de arroz e batatas fritas.</p>
+                <span class="price">R$ 45,00</span>
+                <button class="add-to-cart">Adicionar</button>
+            </div>
+        </div>
+    </div>  
+
+    <div class="category">
+        <h3>Sobremesas</h3>
+        <div class="menu-item">
+            <img src="imagens/torta-de-limao.jpg" alt="Sobremesa 1">
+            <div class="item-details">
+                <h4>Torta de Limão</h4>
+                <p>Torta cremosa de limão com base crocante.</p>
+                <span class="price">R$ 12,00</span>
+                <button class="add-to-cart">Adicionar</button>
+            </div>
+            <div class="item-details">
+                <h4>Mousse de Chocolate</h4>
+                <p>Mousse cremosa de chocolate com cobertura de chantilly.</p>
+                <span class="price">R$ 14,00</span>
+                <button class="add-to-cart">Adicionar</button>
+            </div>
+        </div>
+    </div> 
+
+    </div> 
+</div>
+
+
+<!--incio de pagina de configuração-->
+<div class="configuracao">
+    <div id="configuracoes" class="content header">
+        <h2>Configurações do Restaurante</h2>
+
+        <!-- Nome do Restaurante -->
+        <div class="config-item">
+            <label for="restaurant-name">Nome do Restaurante</label>
+            <input type="text" id="restaurant-name" placeholder="Fast Delivery">
+        </div>
+
+        <!-- Foto do Restaurante -->
+        <div class="config-item">
+            <label for="restaurant-photo">Foto do Restaurante</label>
+            <input type="file" id="restaurant-photo" accept="image/*">
+            <div class="photo-preview">
+                <img src="#" id="photo-preview" alt="Foto do Restaurante" style="display:none;">
+            </div>
+        </div>
+
+        <!-- Horário de Funcionamento -->
+        <div class="config-item">
+            <label>Horário de Funcionamento</label>
+            <div class="dias">
+                <label for="segunda">Segunda-feira</label>
+                <input type="time" id="segunda-comeco"> até <input type="time" id="segunda-feira">
+            </div><br>
+            <div class="dias">
+                <label for="sexta">Sexta-feira</label>
+                <input type="time" id="sexta-comeco"> até <input type="time" id="sexta-feira">
+            </div>
+        </div>
+
+        <!-- Contato -->
+        <div class="config-item">
+            <label for="phone">Telefone</label>
+            <input type="tel" id="phone" placeholder="Digite o telefone">
+        </div>
+
+        <div class="config-item">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="Digite o e-mail">
+        </div>
+
+        <!-- Métodos de Pagamento -->
+        <div class="config-item">
+            <label>Métodos de Pagamento</label>
+            <div>
+                <input type="checkbox" id="credit-card">
+                <label for="credit-card">Cartão de Crédito</label>
+            </div>
+            <div>
+                <input type="checkbox" id="pix">
+                <label for="pix">Pix</label>
+            </div>
+            <div>
+                <input type="checkbox" id="debit">
+                <label for="debit">Débito</label>
+            </div>
+        </div>
+
+        <button class="save-config">Salvar Alterações</button>
+        <div id="success-message" style="display:none; color: #cb2807;">Salvamento feito com sucesso!</div>
+  
+    </div>
+</div>
+<script>
+    document.querySelector('.save-config').addEventListener('click', function() {
+// Exibe a mensagem de sucesso
+const message = document.getElementById('success-message');
+message.style.display = 'block';  // Torna a mensagem visível
+
+// Opcional: Esconde a mensagem após 3 segundos
+setTimeout(function() {
+message.style.display = 'none';
+}, 3000);  // 3000ms = 3 segundos
+});
+
+</script>     
+</body>
+</html>
